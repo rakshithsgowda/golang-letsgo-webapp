@@ -1,0 +1,17 @@
+package main
+
+import (
+	"log"
+	"net/http"
+)
+
+func main() {
+	// CREATE A FILE SERVER
+	fileServer := http.FileServer(http.Dir("."))
+
+	// create a web server
+	log.Println("starting server on port :4000")
+	err := http.ListenAndServe(":4000", fileServer)
+	log.Fatal(err)
+
+}
